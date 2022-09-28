@@ -1,0 +1,27 @@
+ALGORITHM sum_dbl
+VAR
+    tab1,tab2:ARRAY_OF INTEGER[100];
+    hash:HASH_TABLE<INTEGER,INTEGER>
+    sum,i:INTEGER;
+BEGIN
+sum:=0
+    FOR i FROM 0 TO tab1.length-1  DO
+        hash.insert(<tab1[i],1>)
+    END_FOR
+    FOR i FROM 0 TO tab2.length-1  DO
+        IF (hash.lookup(tab2[i])=TRUE) THEN
+            hash.insert(<tab2[i],2>)
+        ELSE
+            hash.insert(<tab2[i],1>)
+        END_IF
+    END_FOR
+
+FOR i FROM 0 TO tab1.length-1  DO
+    IF(hash.get(tab1[i])=2) THEN
+sum:=sum + tab1[i]*2
+    END_IF
+END_FOR
+ 
+ Write(sum)
+
+END
